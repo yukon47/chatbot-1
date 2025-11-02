@@ -13,6 +13,12 @@ st.write(
     "・チャット形式で一連の対話をしながら質問ができる"
 #     "OpenAI APIキーが必要です。[こちら](https://platform.openai.com/account/api-keys)から取得できます。"
 )
+st.write("【工夫した点】")
+st.write(" ・APIキーを秘匿化してプログラムに埋め込み")
+st.write(" ・ファイル未アップロード時はチャット入力が無効化")
+st.write(" ・ファイル読み込み時に文字数を表示")
+st.write(" ・ストリーミング応答で回答をリアルタイム表示")
+st.write(" ・チャット形式で一連の対話をしながら質問ができる")
 
 # OpenAI APIキーの入力
 openai_api_key = st.secrets.get("OPENAI_API_KEY")
