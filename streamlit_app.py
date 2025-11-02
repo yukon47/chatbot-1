@@ -7,7 +7,7 @@ st.write(
     "文書をアップロードして、その内容について質問できるチャットボットです。"
 #     "OpenAI APIキーが必要です。[こちら](https://platform.openai.com/account/api-keys)から取得できます。"
 )
-st.write("[工夫した点](・APIキーを秘匿化してプログラムに埋め込み)")
+st.write("【工夫した点】")
 st.write(" ・APIキーを秘匿化してプログラムに埋め込み")
 st.write(" ・ファイル未アップロード時はチャット入力が無効化")
 st.write(" ・ファイル読み込み時に文字数を表示")
