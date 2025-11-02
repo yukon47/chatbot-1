@@ -51,13 +51,29 @@ if prompt := st.chat_input("文書について質問してください", disable
 
     # アシスタントの応答を生成
     with st.chat_message("assistant"):
-        # 文書内容と質問を組み合わせたメッセージを作成
-        messages = [
-            {
-                "role": "user",
-                "content": f"以下は文書の内容です: {st.session_state.document_content} \n\n---\n\n {prompt}",
-            }
-        ]
+        # API用のメッセージリストを作成
+        # 最初のメッセージには文書内容を含める
+        if len(st.session_state.messages) == 1:
+            # 初回の質問
+            messages = [
+                {
+                    "role": "user",
+                    "content": f"以下は文書の内容です: {st.session_state.document_content} \n\n---\n\n {prompt}",
+                }
+            ]
+        else:
+            # 2回目以降は、文書内容をシステムメッセージとして設定し、会話履歴を追加
+            messages = [
+                {
+                    "role": "system",
+                    "content": f"あなたは以下の文書に基づいて質問に答えるアシスタントです。ユーザーとの会話履歴を考慮して、文脈に沿った回答をしてください。\n\n文書内容:\n{st.session_state.document_content}",
+                }
+            ]
+            # 会話履歴を追加
+            for msg in st.session_state.messages[:-1]:  # 最後のメッセージ（今追加したもの）以外
+                messages.append({"role": msg["role"], "content": msg["content"]})
+            # 現在の質問を追加
+            messages.append({"role": "user", "content": prompt})
 
         # OpenAI APIで応答を生成（ストリーミング）
         stream = client.chat.completions.create(
