@@ -15,6 +15,7 @@ st.write(" ・ストリーミング応答で回答をリアルタイム表示")
 st.write(" ・チャット形式で一連の対話をしながら質問ができる")
 st.write(" ・クイズ機能を追加（クイズボタンと会話リセットボタン）")
 
+
 # OpenAI APIキーの入力
 openai_api_key = st.secrets.get("OPENAI_API_KEY")
 # openai_api_key = st.text_input("OpenAI API Key", type="password")
