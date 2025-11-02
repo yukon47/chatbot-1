@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 
 # タイトルと説明
-st.title("📚 文書対応チャットボット")
+st.title("📚 文書対応チャットボット powered by GPT-4")
 st.write(
     "文書をアップロードして、その内容について質問できるチャットボットです。"
 #     "OpenAI APIキーが必要です。[こちら](https://platform.openai.com/account/api-keys)から取得できます。"
